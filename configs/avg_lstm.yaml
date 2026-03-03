@@ -1,0 +1,25 @@
+Train:
+  epochs: 250
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  train_batch: 128
+  val_batch: 1024
+
+Model:
+  name: AvgLSTM
+  module: models.lstm
+  args:
+    lstm_size: 24
+    fc_size: 24
+
+Loss:
+  loss: BCE      # BCE, BCEWithLogits or MSE
+  output: Probs  # "Logits" or "Probs"
+
+Data:
+  reg_season: False
+  post_season: True
+  Game:
+    active: True
+    total_games: 32
+    data_cols: [Result, FGP3, FTP, FGP2, OR, DR, Blk, OppFGP3, OppFTP, OppFGP2, OppOR, OppDR]

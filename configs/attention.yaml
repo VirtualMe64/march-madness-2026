@@ -1,0 +1,30 @@
+Train:
+  epochs: 250
+  learning_rate: 0.001
+  weight_decay: 0.001
+  train_batch: 1024
+  val_batch: 1024
+
+Model:
+  name: Attention
+  module: models.attention
+  args:
+    attention_sizes: [4, 4]
+    attention_dropout: 0.25
+    hidden_sizes: [4]
+    hidden_dropout: 0.25
+
+Loss:
+  loss: MSE      # BCE, BCEWithLogits or MSE
+  output: Probs  # "Logits" or "Probs"
+
+Data:
+  reg_season: False
+  post_season: True
+  GameWithOpponent:
+    active: True
+    min_games: 24
+    total_games: 24
+    # game_cols: []
+    # opp_cols: []
+    include_seed: True

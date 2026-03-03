@@ -1,0 +1,23 @@
+Train:
+  epochs: 250
+  learning_rate: 0.001
+  weight_decay: 5
+  train_batch: 2000
+  val_batch: 1024
+
+Model:
+  name: DNN
+  module: models.fc
+  args:
+    sizes: [32, 16]
+    dropout: 0.4
+
+Loss:
+  loss: MSE      # BCE, BCEWithLogits or MSE
+  output: Probs  # "Logits" or "Probs"
+
+Data:
+  reg_season: False
+  post_season: True
+  Agg:
+    active: True

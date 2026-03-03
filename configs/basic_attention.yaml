@@ -1,0 +1,30 @@
+# todo: figure out why this simple model learns small values for seed instead of large
+Train:
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  train_batch: 128
+  val_batch: 1024
+
+Model:
+  name: Attention
+  module: models.attention
+  args:
+    attention_sizes: []
+    attention_dropout: 0
+    hidden_sizes: []
+    hidden_dropout: 0
+
+Loss:
+  loss: MSE      # BCE, BCEWithLogits or MSE
+  output: Probs  # "Logits" or "Probs"
+
+Data:
+  reg_season: False
+  post_season: True
+  GameWithOpponent:
+    active: True
+    min_games: 24
+    total_games: 24
+    game_cols: [Result]
+    opp_cols: [Seed]
