@@ -40,7 +40,7 @@ for row in tqdm(tourney_results.rows(named=True)):
     data2 = torch.from_numpy(data2).unsqueeze(0)
     
     pred = model(data1.to(device), data2.to(device))
-    pred = pred.detach().numpy().item()
+    pred = pred.detach().cpu().numpy().item()
     if cfg.output == OutputType.LOGITS:
         pred = torch.sigmoid(pred)
     acc.update(pred > 0.5 if result else pred < 0.5)
